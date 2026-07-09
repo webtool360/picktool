@@ -1,1 +1,323 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
+:root{
+--primary:#2563eb;
+--secondary:#1d4ed8;
+--background:#f8fafc;
+--white:#ffffff;
+--text:#1f2937;
+--radius:18px;
+--shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:var(--background);
+color:var(--text);
+line-height:1.6;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+button{
+cursor:pointer;
+border:none;
+font-family:inherit;
+transition:.3s;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 24px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:var(--shadow);
+}
+
+.logo h1{
+font-size:30px;
+}
+
+.logo p{
+font-size:14px;
+opacity:.9;
+}
+
+#menuButton{
+display:none;
+background:#fff;
+color:var(--primary);
+width:46px;
+height:46px;
+border-radius:12px;
+font-size:24px;
+}
+
+#navigation{
+display:flex;
+gap:24px;
+}
+
+#navigation a{
+font-weight:600;
+color:#fff;
+}
+
+.hero{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+color:#555;
+margin-bottom:35px;
+}
+
+.searchBox{
+display:flex;
+max-width:700px;
+margin:auto;
+background:#fff;
+border-radius:50px;
+overflow:hidden;
+box-shadow:var(--shadow);
+}
+
+.searchBox input{
+flex:1;
+padding:18px;
+border:none;
+outline:none;
+font-size:16px;
+}
+
+.searchBox button{
+padding:18px 25px;
+background:var(--primary);
+color:#fff;
+}
+
+.quickTools{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin-top:30px;
+}
+
+.quickTools button{
+padding:12px 20px;
+background:#fff;
+border-radius:30px;
+box-shadow:var(--shadow);
+font-weight:600;
+  }
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1200px;
+margin:60px auto;
+padding:0 20px;
+}
+
+.stat{
+background:var(--white);
+padding:30px;
+border-radius:var(--radius);
+text-align:center;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.stat:hover{
+transform:translateY(-6px);
+}
+
+.stat h2{
+font-size:36px;
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.featured,
+.categories{
+max-width:1200px;
+margin:70px auto;
+padding:0 20px;
+}
+
+.featured h2,
+.categories h2{
+text-align:center;
+font-size:34px;
+margin-bottom:35px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--white);
+padding:25px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h3{
+margin-bottom:15px;
+font-size:22px;
+}
+
+.card p{
+color:#666;
+margin-bottom:20px;
+}
+
+.card button{
+background:var(--primary);
+color:#fff;
+padding:12px 18px;
+border-radius:10px;
+font-weight:600;
+}
+
+.card button:hover{
+background:var(--secondary);
+  }
+
+footer{
+margin-top:80px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+text-align:center;
+padding:50px 20px;
+}
+
+footer h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+footer p{
+margin:8px 0;
+opacity:.9;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+.header{
+padding:15px;
+}
+
+.logo h1{
+font-size:24px;
+}
+
+.logo p{
+display:none;
+}
+
+#menuButton{
+display:block;
+}
+
+#navigation{
+display:none;
+position:absolute;
+top:76px;
+left:0;
+width:100%;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+flex-direction:column;
+padding:20px;
+gap:18px;
+}
+
+.hero{
+padding:60px 15px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.searchBox{
+flex-direction:column;
+border-radius:18px;
+}
+
+.searchBox input{
+width:100%;
+text-align:center;
+}
+
+.searchBox button{
+width:100%;
+}
+
+.quickTools button{
+width:48%;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+
+.card,
+.stat,
+button{
+transition:all .3s ease;
+                             }
