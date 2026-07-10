@@ -1,4 +1,13 @@
-/* Master Design File for PickTool */
+/* Reset and basic layout fix */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; line-height: 1.6; }
+
+/* Fix the navigation and tool list */
+.nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 20px; background: #f8f9fa; }
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+.tool-card { border: 1px solid #ddd; padding: 15px; text-decoration: none; color: #333; border-radius: 8px; display: block; }
+.header { text-align: center; padding: 40px 20px; }
+
 
 * {
     box-sizing: border-box;
