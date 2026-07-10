@@ -1,91 +1,29 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+/* Modern Reset & Font */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
 
 /* Header */
-.header { text-align: center; padding: 20px; background: #2c3e50; color: white; }
-.search-bar { width: 90%; max-width: 400px; padding: 12px; margin-top: 15px; border-radius: 25px; border: none; text-align: center; }
+.header { background: #3b5998; color: white; text-align: center; padding: 20px 10px; }
+.search-bar { width: 95%; max-width: 500px; padding: 12px; margin-top: 10px; border-radius: 20px; border: none; }
 
-/* Nav Bar */
-.nav-bar { display: flex; justify-content: center; background: #34495e; padding: 10px; gap: 10px; flex-wrap: wrap; }
-.nav-bar a { color: #ecf0f1; text-decoration: none; font-weight: bold; padding: 5px 10px; }
-.nav-bar a:hover { color: #1abc9c; }
+/* Navigation */
+.nav-bar { background: white; display: flex; justify-content: space-around; padding: 15px; border-bottom: 1px solid #ddd; position: sticky; top: 0; }
+.nav-bar a { text-decoration: none; color: #4b4f56; font-weight: 600; font-size: 15px; }
 
-/* Tools Grid */
-.content-area { padding: 20px; }
-.tool-grid { display: grid; gap: 15px; }
-.tool-card { display: block; padding: 20px; background: #ecf0f1; border-radius: 10px; text-decoration: none; color: #2c3e50; font-weight: bold; text-align: center; border: 1px solid #bdc3c7; }
-.tool-card:hover { background: #bdc3c7; }
-
-/* Calculator Containers */
-.calculator-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.1);
+/* Accordion Sections */
+.accordion-item { margin: 15px; }
+.accordion-header { 
+    width: 100%; padding: 15px; background: white; border: 1px solid #ddd; 
+    border-radius: 8px; font-weight: bold; cursor: pointer; text-align: left;
+    display: flex; justify-content: space-between; align-items: center;
 }
+.accordion-content { display: none; padding: 10px; background: white; border: 1px solid #ddd; border-radius: 0 0 8px 8px; }
+.accordion-content.active { display: block; }
 
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #f0f0f0;
-    border-radius: 12px;
-    background: #fdfdfd;
+/* Tool Grid */
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tool-card { 
+    background: #f8f9fa; padding: 15px; text-align: center; border-radius: 8px; 
+    text-decoration: none; color: #3b5998; border: 1px solid #ddd; font-weight: 600;
 }
-input:focus { border-color: #6c5ce7; outline: none; }
-
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-    color: white;
-    transition: transform 0.2s;
-}
-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
-/* --- Global Tool Alignment --- */
-.calculator-container h1, 
-.calculator-container p, 
-.calculator-container .result-box {
-    text-align: center;
-}
-
-/* --- Global Back Button Style --- */
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 25px;
-    padding: 12px;
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.back-link:hover {
-    background: #e9ecef;
-}
-
-.accordion-content { display: none; padding: 10px; }
-.accordion-header {
-    width: 100%;
-    padding: 15px;
-    background: #34495e;
-    color: white;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
+.tool-card:hover { background: #e9ecef; }
