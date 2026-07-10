@@ -2,68 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PickTool | Make Life Easiest</title>
+    <title>PICKTOOL | Professional Tools</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
     <header class="header">
-        <h1>Welcome to PICKTOOL</h1>
-        <p>Make your life from easy to easiest.</p>
-        <input type="text" class="search-bar" placeholder="Search for tools...">
+        <h1>PICKTOOL</h1>
+        <input type="text" class="search-bar" placeholder="Search tools...">
     </header>
 
-    <!-- Navigation Bar: Horizontal -->
     <nav class="nav-bar">
-        <a href="index.html">Calculation</a>
-        <a href="#">Image</a>
-        <a href="#">Game</a>
-        <a href="#">Puzzle</a>
-        <a href="#">Logic</a>
-        <a <a href="#surprised">Surprised</a>
-        <a href="#">About</a>
+        <a href="#calc-content">Calculation</a>
+        <a href="#surprised-content">Surprised</a>
     </nav>
 
-    <!-- Line 28: Start of Accordion -->
-<!-- Line 28: Cleaned Accordion -->
-<div class="accordion-item">
-    <button class="accordion-header" onclick="toggleAccordion('calc-content')">Calculation Tools ▼</button>
-    <div id="calc-content" class="accordion-content">
-        <div class="tool-grid">
-            <a href="tools/age-calculator.html" class="tool-card"><h3>Age</h3></a>
-            <a href="tools/bmi-calculator.html" class="tool-card"><h3>BMI</h3></a>
-            <a href="tools/gold-calculator.html" class="tool-card"><h3>Gold</h3></a>
-            <a href="tools/zakat-calculator.html" class="tool-card"><h3>Zakat</h3></a>
-            <a href="tools/discount-calculator.html" class="tool-card"><h3>Discount</h3></a>
-            <a href="tools/complex-calculator.html" class="tool-card"><h3>Complex</h3></a>
+    <!-- Calculation Section -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion('calc-content')">Calculation Tools ▾</button>
+        <div id="calc-content" class="accordion-content active">
+            <div class="tool-grid">
+                <a href="tools/age-calculator.html" class="tool-card">Age</a>
+                <a href="tools/bmi-calculator.html" class="tool-card">BMI</a>
+                <a href="tools/gold-calculator.html" class="tool-card">Gold</a>
+                <a href="tools/zakat-calculator.html" class="tool-card">Zakāt</a>
+                <a href="tools/discount-calculator.html" class="tool-card">Discount</a>
+                <a href="tools/complex-calculator.html" class="tool-card">Complex</a>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="accordion-item">
-    <button class="accordion-header" onclick="toggleAccordion('surprised-content')">Surprised Tools ▼</button>
-    <div id="surprised-content" class="accordion-content">
-        <div class="tool-grid">
-            <a href="tools/password-maker.html" class="tool-card"><h3>Password Maker</h3></a>
-            <a href="tools/qr-maker.html" class="tool-card"><h3>QR Code Maker</h3></a>
-            <a href="tools/barcode-maker.html" class="tool-card"><h3>Bar Code Maker</h3></a>
-            <a href="tools/name-maker.html" class="tool-card"><h3>Stylish Name Maker</h3></a>
-            <a href="tools/email-generator.html" class="tool-card"><h3>Email Generator</h3></a>
+    <!-- Surprised Section -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion('surprised-content')">Surprised Tools ▾</button>
+        <div id="surprised-content" class="accordion-content">
+            <div class="tool-grid">
+                <a href="tools/password-maker.html" class="tool-card">Password</a>
+                <a href="tools/qr-maker.html" class="tool-card">QR Code</a>
+                <a href="tools/barcode-maker.html" class="tool-card">Bar Code</a>
+                <a href="tools/name-maker.html" class="tool-card">Name Maker</a>
+                <a href="tools/email-generator.html" class="tool-card">Email Gen</a>
+            </div>
         </div>
     </div>
-</div>
 
-    
     <script>
-        document.querySelector('.search-bar').addEventListener('input', function(e) {
-            const term = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.tool-card');
-            cards.forEach(card => {
-                const title = card.innerText.toLowerCase();
-                card.style.display = title.includes(term) ? 'block' : 'none';
-            });
-        });
+        function toggleAccordion(id) {
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
     </script>
 </body>
 </html>
