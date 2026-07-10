@@ -405,6 +405,11 @@ line-height:2;
 grid-template-columns:1fr;
 
 }
+  .card{
+text-decoration:none;
+color:inherit;
+display:block;
+  }
 
 .toolCard{
 
