@@ -101,3 +101,27 @@ button:hover {
 .back-link:hover {
     text-decoration: underline;
 }
+/* Main Layout: Sidebar on the left, Content on the right */
+.main-wrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+/* Vertical Sidebar */
+.nav-menu {
+    width: 200px;
+    background: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* This makes it vertical */
+    gap: 15px;
+    border-right: 1px solid #ddd;
+}
+
+/* Content Area */
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+    }
+
