@@ -35,26 +35,40 @@ h1 { font-size: 24px; color: #1c1e21; margin-bottom: 10px; }
     max-width: 500px;
     margin: 10px auto;
 }
-/* Lines 39-56: Universal styling for all tools */
+/* Universal Tool Styling */
 .calculator-container input, 
 .calculator-container select {
     width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #ccd0d5;
-    border-radius: 6px;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
     display: block;
 }
 
 .calculator-container button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #3b5998;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.calculator-container button:active {
+    background: #2d4373;
+}
+
+.back-link {
+    display: block;
+    margin-top: 25px;
+    color: #3b5998;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
 }
