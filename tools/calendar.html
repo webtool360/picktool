@@ -3,20 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic & Gregorian Calendar - PickTool</title>
+    <title>Calendar - PickTool</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #3b5998;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+        .date-cell {
+            padding: 10px;
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+        .date-cell:hover {
+            background-color: #f0f2f5;
+        }
+        .date-cell.empty {
+            cursor: default;
+            background: none;
+        }
+    </style>
 </head>
 <body>
-
     <div class="calculator-container">
-        <h1>Islamic & Gregorian Calendar</h1>
-        <div id="calendar-display">
-            <!-- Calendar will be rendered here -->
+        <div class="calendar-header">
+            <h1 id="month-year-display">July 2026</h1>
+            <div class="toggle-container">
+                <span>Gregorian</span>
+                <label class="switch">
+                    <input type="checkbox" id="calendar-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Hijri</span>
+            </div>
+        </div>
+        <div class="days-grid" id="days-grid">
+            <!-- Days of the week will be rendered here -->
+        </div>
+        <div class="dates-grid" id="dates-grid">
+            <!-- Days of the month will be rendered here -->
         </div>
         <a href="../index.html" class="back-link">← Back to PickTool Home</a>
     </div>
-
-    <!-- Here we will include a library moment.js and the hijri plugin for conversion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.2/moment-hijri.min.js"></script>
     <script src="../assets/js/calendar.js"></script>
