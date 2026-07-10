@@ -3,23 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zakat Calculator - PickTool</title>
+    <title>Zakat & Ushr Calculator - PickTool</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
     <div class="calculator-container">
-        <h1>Zakat Calculator</h1>
-        <p>Calculate 2.5% Zakat on your total assets.</p>
+        <h1>Zakat & Ushr Calculator</h1>
+        
+        <div class="input-group">
+            <label for="type">Select Type:</label>
+            <select id="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <option value="0.025">Zakat (2.5%)</option>
+                <option value="0.10">Ushr (10% - Irrigated)</option>
+                <option value="0.05">Ushr (5% - Natural Rainfall)</option>
+            </select>
+        </div>
 
         <div class="input-group">
-            <label for="total-assets">Total Assets (PKR):</label>
+            <label for="total-assets">Total Amount/Yield (PKR):</label>
             <input type="number" id="total-assets" placeholder="e.g., 500000">
         </div>
 
-        <button id="calculate-btn">Calculate Zakat</button>
+        <button id="calculate-btn">Calculate Amount</button>
 
         <div id="result" class="result-box"></div>
+
+        <div style="margin-top: 20px; text-align: left; font-size: 13px; color: #555; border-top: 1px solid #eee; padding-top: 10px;">
+            <strong>Guidelines:</strong>
+            <ul style="padding-left: 20px;">
+                <li><strong>Zakat:</strong> Paid on wealth held for one lunar year (Hawl) if it exceeds the Nisaab threshold.</li>
+                <li><strong>Ushr:</strong> Paid on agricultural produce at the time of harvest.</li>
+            </ul>
+        </div>
         
         <a href="../index.html" class="back-link">← Back to PickTool Home</a>
     </div>
