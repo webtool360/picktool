@@ -35,16 +35,19 @@ h1 { font-size: 24px; color: #1c1e21; margin-bottom: 10px; }
     max-width: 500px;
     margin: 10px auto;
 }
-/* Style inputs like a modern app */
-input, select {
+/* Lines 39-56: Universal styling for all tools */
+.calculator-container input, 
+.calculator-container select {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
     border: 1px solid #ccd0d5;
     border-radius: 6px;
     font-size: 16px;
+    display: block;
 }
-button {
+
+.calculator-container button {
     width: 100%;
     padding: 12px;
     background: #3b5998;
@@ -53,11 +56,5 @@ button {
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 10px;
 }
-.back-link {
-    display: block;
-    margin-top: 20px;
-    color: #3b5998;
-    text-decoration: none;
-    font-weight: bold;
-    }
