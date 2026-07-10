@@ -34,3 +34,12 @@
 
 </body>
 </html>
+<script>
+    document.getElementById('searchBar').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let cards = document.querySelectorAll('.tool-card');
+        cards.forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(filter) ? "" : "none";
+        });
+    });
+</script>
