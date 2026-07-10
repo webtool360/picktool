@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game - PickTool</title>
+    <!-- Links to your locked, perfect CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Game-specific styles (keeps your main CSS safe!) -->
+    <style>
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .card {
+            background-color: #3b5998;
+            color: transparent; /* Hides the emoji */
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.3s;
+        }
+        .card.flipped {
+            background-color: #f8f9fa;
+            color: #1c1e21; /* Shows the emoji */
+            border: 2px solid #3b5998;
+            cursor: default;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Emoji Memory Match</h1>
+        
+        <div class="stats">
+            <span>Moves: <span id="moves">0</span></span>
+            <span>Matches: <span id="matches">0</span> / 8</span>
+        </div>
+
+        <!-- The grid where cards will appear -->
+        <div class="game-board" id="game-board"></div>
+
+        <button id="restart-btn">Restart Game</button>
+        
+        <a href="../index.html" class="back-link">← Back to PickTool Home</a>
+    </div>
+
+    <!-- Links to the game logic -->
+    <script src="../assets/js/puzzle-game.js"></script>
+</body>
+</html>
