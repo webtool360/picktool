@@ -3,109 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PickTool - Essential Everyday Tools</title>
-    <!-- Links to your main design file -->
+    <title>PickTool | Make Life Easiest</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    
     <style>
-        .home-container {
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-        .site-title {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .site-description {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-        .tool-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .tool-card {
-            display: block;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #333;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eaeaea;
-            transition: all 0.2s ease-in-out;
-        }
-        .tool-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            border-color: #007bff;
-        }
-        .tool-card h2 {
-            font-size: 20px;
-            color: #007bff;
-            margin-bottom: 5px;
-        }
-        .tool-card p {
-            margin: 0;
-            font-size: 14px;
-        }
-        .coming-soon {
-            padding: 20px;
-            border: 2px dashed #ccc;
-            border-radius: 10px;
-            color: #999;
-            font-style: italic;
-        }
+        /* New Styles for your layout */
+        .header { text-align: center; padding: 20px; }
+        .search-bar { width: 90%; max-width: 400px; padding: 10px; margin: 10px auto; border: 1px solid #ccc; border-radius: 20px; display: block; }
+        .nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 20px; border-bottom: 2px solid #eee; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: bold; padding: 10px; }
+        .nav-menu a:hover { color: #007bff; }
     </style>
 </head>
 <body>
 
-    <div class="home-container">
-        <h1 class="site-title">PickTool</h1>
-        <p class="site-description">Your fast, simple collection of everyday tools.</p>
+    <div class="header">
+        <h1>Welcome to PICKTOOL</h1>
+        <p>Make your life from easy to easiest.</p>
+    </div>
 
+    <input type="text" class="search-bar" placeholder="Search for tools...">
+
+    <div class="nav-menu">
+        <a href="#calculation">Calculation Tools</a>
+        <a href="#">Image Tools</a>
+        <a href="#">Game</a>
+        <a href="#">Puzzle</a>
+        <a href="#">Logic</a>
+        <a href="#">Surprised</a>
+        <a href="#">About Us</a>
+    </div>
+
+    <div class="home-container" id="calculation">
+        <h2>Calculation Tools</h2>
         <div class="tool-grid">
-                
-            <a href="tools/complex-calculator.html" class="tool-card">
-                <h2>Complex Calculator</h2>
-                <p>Simple mode for math, or Engineering mode for advanced science.</p>
-                        </a>
-            
-            <!-- This link is now updated to perfectly match your GitHub structure -->
-            <a href="tools/age-calculator.html" class="tool-card">
-                <h2>Age Calculator</h2>
-                <p>Find out your exact age in years, months, and days.</p>
-            </a>
-
-<a href="tools/bmi-calculator.html" class="tool-card">
-    <h2>BMI Calculator</h2>
-    <p>Check your Body Mass Index and health category.</p>
-</a>
-            <a href="tools/gold-calculator.html" class="tool-card">
-                <h2>Gold Calculator</h2>
-                <p>Calculate your gold's total value in PKR instantly.</p>
-            </a>
-                        <a href="tools/currency-converter.html" class="tool-card">
-                <h2>Currency Converter</h2>
-                <p>Convert PKR to USD, EUR, and other major currencies.</p>
-                        </a>
-                        <a href="tools/zakat-calculator.html" class="tool-card">
-                <h2>Zakat Calculator</h2>
-                <p>Calculate your Zakat (2.5%) on gold, cash, and assets.</p>
-                        </a>
-                        <a href="tools/discount-calculator.html" class="tool-card">
-                <h2>Discount Calculator</h2>
-                <p>Easily calculate sale prices and savings.</p>
-                        </a>
-            
-            <div class="coming-soon">
-                More tools are being built...
-            </div>
-
+            <a href="tools/age-calculator.html" class="tool-card"><h2>Age Calculator</h2></a>
+            <a href="tools/bmi-calculator.html" class="tool-card"><h2>BMI Calculator</h2></a>
+            <a href="tools/gold-calculator.html" class="tool-card"><h2>Gold Calculator</h2></a>
+            <a href="tools/zakat-calculator.html" class="tool-card"><h2>Zakat & Ushr</h2></a>
+            <a href="tools/discount-calculator.html" class="tool-card"><h2>Discount Calc</h2></a>
+            <a href="tools/complex-calculator.html" class="tool-card"><h2>Complex Calc</h2></a>
         </div>
     </div>
 
