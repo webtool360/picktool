@@ -27,15 +27,37 @@ body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
     text-decoration: none; color: #3b5998; border: 1px solid #ddd; font-weight: 600;
 }
 .tool-card:hover { background: #e9ecef; }
-/* One rule to rule them all: Styles every page content to be modern and clean */
-body > div:not(.header):not(.nav-bar), 
-body > main, 
+/* Line 30: Modern App-Style Tool Container */
+body { padding-bottom: 40px; }
+h1 { font-size: 24px; color: #1c1e21; margin-bottom: 10px; }
 .calculator-container {
-    background: white;
     padding: 20px;
-    margin: 20px auto; /* Centers the box */
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border: 1px solid #ddd;
-    max-width: 600px;
+    max-width: 500px;
+    margin: 10px auto;
 }
+/* Style inputs like a modern app */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+    font-size: 16px;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #3b5998;
+    text-decoration: none;
+    font-weight: bold;
+    }
