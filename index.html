@@ -14,36 +14,33 @@
         <input type="text" class="search-bar" placeholder="Search for tools...">
     </header>
 
-    <div class="main-wrapper">
-        <nav class="nav-menu">
-            <a href="index.html">Calculation Tools</a>
-            <a href="#">Image Tools</a>
-            <a href="#">Game</a>
-            <a href="#">Puzzle</a>
-            <a href="#">Logic</a>
-            <a href="#">Surprised</a>
-            <a href="#">About Us</a>
-        </nav>
+    <!-- Navigation Bar: Horizontal -->
+    <nav class="nav-bar">
+        <a href="index.html">Calculation</a>
+        <a href="#">Image</a>
+        <a href="#">Game</a>
+        <a href="#">Puzzle</a>
+        <a href="#">Logic</a>
+        <a href="#">Surprised</a>
+        <a href="#">About</a>
+    </nav>
 
-        <main class="content-area" id="calculation">
-            <h2>Calculation Tools</h2>
-            <div class="tool-grid">
-                <a href="tools/age-calculator.html" class="tool-card"><h3>Age Calculator</h3></a>
-                <a href="tools/bmi-calculator.html" class="tool-card"><h3>BMI Calculator</h3></a>
-                <a href="tools/gold-calculator.html" class="tool-card"><h3>Gold Calculator</h3></a>
-                <a href="tools/zakat-calculator.html" class="tool-card"><h3>Zakat & Ushr</h3></a>
-                <a href="tools/discount-calculator.html" class="tool-card"><h3>Discount Calc</h3></a>
-                <a href="tools/complex-calculator.html" class="tool-card"><h3>Complex Calc</h3></a>
-            </div>
-        </main>
-    </div>
+    <main class="content-area" id="calculation">
+        <h2>Calculation Tools</h2>
+        <div class="tool-grid">
+            <a href="tools/age-calculator.html" class="tool-card"><h3>Age</h3></a>
+            <a href="tools/bmi-calculator.html" class="tool-card"><h3>BMI</h3></a>
+            <a href="tools/gold-calculator.html" class="tool-card"><h3>Gold</h3></a>
+            <a href="tools/zakat-calculator.html" class="tool-card"><h3>Zakat</h3></a>
+            <a href="tools/discount-calculator.html" class="tool-card"><h3>Discount</h3></a>
+            <a href="tools/complex-calculator.html" class="tool-card"><h3>Complex</h3></a>
+        </div>
+    </main>
 
-    <!-- Script moved to the very bottom to ensure it works -->
     <script>
         document.querySelector('.search-bar').addEventListener('input', function(e) {
             const term = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.tool-card');
-            
             cards.forEach(card => {
                 const title = card.innerText.toLowerCase();
                 card.style.display = title.includes(term) ? 'block' : 'none';
