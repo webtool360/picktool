@@ -6,6 +6,13 @@
     <title>PickTool</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+    <script>
+if ("serviceWorker" in navigator) {
+
+navigator.serviceWorker.register("sw.js");
+
+}
+    </script>
 <body>
 
     <!-- Header Banner -->
@@ -37,7 +44,10 @@
         <p>&copy; 2026 PickTool. All rights reserved.</p>
         <p>Contact us: mnasirafridi313@gmail.com</p>
     </footer>
+    
+<link rel="manifest" href="manifest.json">
 
+<meta name="theme-color" content="#3b5998">
 </body>
 </html>
 <script>
