@@ -27,3 +27,15 @@ body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
     text-decoration: none; color: #3b5998; border: 1px solid #ddd; font-weight: 600;
 }
 .tool-card:hover { background: #e9ecef; }
+/* One rule to rule them all: Styles every page content to be modern and clean */
+body > div:not(.header):not(.nav-bar), 
+body > main, 
+.calculator-container {
+    background: white;
+    padding: 20px;
+    margin: 20px auto; /* Centers the box */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    max-width: 600px;
+}
