@@ -1,127 +1,25 @@
-/* Reset and basic layout fix */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: sans-serif; line-height: 1.6; }
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
 
-/* Fix the navigation and tool list */
-.nav-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 20px; background: #f8f9fa; }
-.tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-.tool-card { border: 1px solid #ddd; padding: 15px; text-decoration: none; color: #333; border-radius: 8px; display: block; }
-.header { text-align: center; padding: 40px 20px; }
+/* Top Header */
+.header { text-align: center; padding: 20px; background: #f4f4f4; border-bottom: 2px solid #ddd; }
+.search-bar { width: 80%; max-width: 400px; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 20px; }
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-body {
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.calculator-container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-p {
-    color: #666;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.result-box {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #e9ecef;
-    min-height: 50px;
-}
-
-.back-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-}
-/* Main Layout: Sidebar on the left, Content on the right */
-.main-wrapper {
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh;
-}
+/* Main Wrapper: Sidebar + Content */
+.main-wrapper { display: flex; flex-direction: row; min-height: 80vh; }
 
 /* Vertical Sidebar */
-.nav-menu {
-    width: 200px;
-    background: #f4f4f4;
-    padding: 20px;
-    display: flex;
-    flex-direction: column; /* This makes it vertical */
-    gap: 15px;
-    border-right: 1px solid #ddd;
-}
+.nav-menu { width: 220px; background: #fff; padding: 20px; display: flex; flex-direction: column; gap: 15px; border-right: 1px solid #eee; }
+.nav-menu a { text-decoration: none; color: #333; font-weight: bold; padding: 10px; border-bottom: 1px solid #eee; }
+.nav-menu a:hover { color: #007bff; }
 
-/* Content Area */
-.content-area {
-    flex-grow: 1;
-    padding: 20px;
-    }
+/* Horizontal Content */
+.content-area { flex-grow: 1; padding: 20px; }
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.tool-card { border: 1px solid #ddd; padding: 20px; text-decoration: none; color: #333; border-radius: 8px; text-align: center; transition: 0.3s; }
+.tool-card:hover { background: #f9f9f9; border-color: #007bff; }
 
+/* Calculator Containers (For your tool pages) */
+.calculator-container { max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+.input-group { margin-bottom: 15px; }
+.result-box { margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 5px; }
