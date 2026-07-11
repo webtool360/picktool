@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Trading Journal</h2>
+        <label>Account Balance ($):</label>
+        <input type="number" id="accountBalance" value="100">
+        
+        <label>Pair:</label>
+        <input type="text" id="pair" placeholder="e.g. XAU/USD">
+        
+        <label>Volume (Lots):</label>
+        <input type="number" id="volume" step="0.01">
+        
+        <label>Result ($ Profit/Loss):</label>
+        <input type="number" id="resultVal" placeholder="e.g. 15 or -15">
+        
+        <button onclick="addTrade()" style="width: 100%; margin-top:10px;">Add Trade</button>
+        
+        <h3>History:</h3>
+        <ul id="tradeHistory"></ul>
+        <p><strong>Final Balance: $<span id="finalBalance">100</span></strong></p>
+        
+        <a href="../index.html">← Back to Home</a>
+    </div>
+    <script src="../assets/js/trading-journal.js"></script>
+</body>
+</html>
