@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Name Maker</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; color: #333; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        .name-row { background: #fff; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        button { padding: 10px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        .copy-btn { background-color: #28a745; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" style="text-decoration: none; color: #007bff;">&larr; Back</a>
+    <h2>Fancy Name Maker</h2>
+    <input type="text" id="userInput" placeholder="Enter name here..." oninput="generateNames()">
+    <div id="results"></div>
+    <button id="moreBtn" onclick="loadMore()" style="display:none; width: 100%; margin-top: 10px;">Show More</button>
+
+    <script>
+        // Array of transformation styles
+        const fonts = [
+            (str) => str.toUpperCase(),
+            (str) => str.toLowerCase(),
+            (str) => '★' + str + '★',
+            (str) => '꧁' + str + '꧂',
+            (str) => '♛' + str + '♛',
+            (str) => '『' + str + '』',
+            (str) => '⚡' + str + '⚡',
+            (str) => '✿' + str + '✿',
+            (str) => '╰☆' + str + '☆╮',
+            (str) => '『' + str + '』',
+            (str) => '【' + str + '】',
+            (str) => '『' + str + '』' + '亗',
+            (str) => '×' + str + '×',
+            (str) => 'KING' + str,
+            (str) => str + '999',
+            (str) => '☠' + str + '☠',
+            (str) => '『' + str + '』',
+            (str) => '꧁' + str + '꧂',
+            (str) => '★' + str + '★',
+            (str) => '『' + str + '』'
+        ];
+
+        let currentIndex = 0;
+
+        function generateNames() {
+            currentIndex = 0;
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('moreBtn').style.display = 'block';
+            loadMore();
+        }
+
+        function loadMore() {
+            let input = document.getElementById('userInput').value || "Your Name";
+            let container = document.getElementById('results');
+            let end = currentIndex + 10;
+            
+            for (let i = currentIndex; i < end && i < fonts.length; i++) {
+                let div = document.createElement('div');
+                div.className = 'name-row';
+                div.innerHTML = `<span>${fonts[i](input)}</span> 
+                                 <button class="copy-btn" onclick="copyName(this)">Copy</button>`;
+                container.appendChild(div);
+            }
+            currentIndex = end;
+            if (currentIndex >= fonts.length) document.getElementById('moreBtn').style.display = 'none';
+        }
+
+        function copyName(btn) {
+            let text = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(text);
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 2000);
+        }
+    </script>
+</body>
+</html>
