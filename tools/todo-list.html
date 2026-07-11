@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .todo-container { max-width: 400px; margin: auto; padding: 20px; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f4f4f4; padding: 10px; margin-bottom: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="calculator-container todo-container">
+        <h2>My Tasks</h2>
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+        <br>
+        <a href="../index.html">← Back to Home</a>
+    </div>
+    <script src="../assets/js/todo-list.js"></script>
+</body>
+</html>
