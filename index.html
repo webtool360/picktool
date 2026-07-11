@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PickTool</title>
     <link rel="stylesheet" href="assets/css/style.css">
-        </script>
-</head>
+        <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="manifest.json">
     <script>
-if ("serviceWorker" in navigator) {
-
-navigator.serviceWorker.register("sw.js");
-
-}
-<link rel="manifest" href="manifest.json">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SNHG53LRH5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SNHG53LRH5');
-
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNHG53LRH5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SNHG53LRH5');
+            </script>
+</head>
+    
 <body>
 
     <!-- Header Banner -->
