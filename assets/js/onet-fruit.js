@@ -11,7 +11,9 @@ function initGame() {
     score = 0;
     tilesLeft = 64;
     selected = null;
-    document.getElementById('score').innerText = score;
+    
+    const scoreElement = document.getElementById('score');
+    if (scoreElement) scoreElement.innerText = score;
     
     grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(null));
     
@@ -22,6 +24,8 @@ function initGame() {
     deck.sort(() => Math.random() - 0.5);
     
     const board = document.getElementById('game-board');
+    if (!board) return; // Prevents crashing if HTML isn't found
+    
     board.innerHTML = '';
     
     let idx = 0;
@@ -150,5 +154,6 @@ function shuffleGrid() {
     }
 }
 
-window.onload = initGame;
-      
+// Safer trigger: waits for HTML to load before creating the game
+document.addEventListener('DOMContentLoaded', initGame);
+                   
