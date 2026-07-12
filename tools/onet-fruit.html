@@ -4,42 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onet Fruit Classic</title>
-    
-    <!-- This links your standard website design (like the Age Calculator) -->
-    <link rel="stylesheet" href="../style.css"> 
-    
     <style>
-        /* Only the game board mechanics stay here */
+        /* Exact matching design to your Age Calculator */
+        body {
+            font-family: sans-serif;
+            background-color: #f0f4f9; 
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border: 2px solid #3b5998; /* Blue rounded line */
+            border-radius: 12px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        h2 {
+            color: #3b5998; /* Blue title */
+            margin-top: 0;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+        .score-text {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        /* Game Board specific styles */
         #game-board {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            gap: 4px;
-            background: #8D6E63; 
-            padding: 8px;
+            gap: 3px;
+            background: #e4e9f0; 
+            padding: 5px;
             border-radius: 8px;
-            margin: 20px auto;
+            margin: 0 auto 20px auto;
             width: 100%;
-            max-width: 400px;
             box-sizing: border-box;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
-        
         .tile {
             aspect-ratio: 1;
-            background: #FFFDE7;
-            border-radius: 6px;
+            background: #ffffff;
+            border-radius: 4px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: clamp(16px, 6vw, 26px); 
+            font-size: clamp(16px, 6vw, 24px); 
             cursor: pointer;
-            box-shadow: 0 3px 0 #D7CCC8;
             user-select: none;
-            transition: transform 0.1s, box-shadow 0.1s;
+            box-shadow: 0 2px 0 #cbd5e1;
+            transition: transform 0.1s;
         }
         .tile:active:not(.empty) {
-            transform: translateY(3px);
-            box-shadow: 0 0 0 #D7CCC8;
+            transform: translateY(2px);
+            box-shadow: none;
         }
         .tile.empty {
             background: transparent;
@@ -47,42 +71,57 @@
             cursor: default;
         }
         .tile.selected {
-            background: #B2EBF2;
-            border: 2px solid #00BCD4;
-            box-shadow: 0 1px 0 #00ACC1;
-            transform: translateY(2px);
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+            box-sizing: border-box;
         }
+
+        /* Bottom Buttons */
         .game-controls {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 10px;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
-        .score-text {
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .btn {
+            background-color: #3b5998; /* Action button in blue rounded bubble */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .btn:active {
+            opacity: 0.8;
+        }
+        .back-link {
+            display: inline-block;
+            color: #3b5998;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="../index.html" class="back-link">&larr; Back</a>
         <h2>Onet Fruit Classic</h2>
-        
         <div class="score-text">Score: <span id="score">0</span></div>
         
+        <!-- The board where JavaScript will inject the fruits -->
         <div id="game-board"></div>
         
         <div class="game-controls">
-            <!-- Ensure your buttons use the same class as your Age Calculator (usually "btn") -->
             <button class="btn" onclick="initGame()">New Game</button>
             <button class="btn" onclick="shuffleGrid()">Shuffle</button>
         </div>
+        
+        <a href="../index.html" class="back-link">&larr; Back to PickTool Home</a>
     </div>
 
-    <!-- This links to your JavaScript. They MUST be in the exact same folder. -->
+    <!-- Make sure the JS file is named exactly this -->
     <script src="onet-fruit.js"></script>
 </body>
 </html>
