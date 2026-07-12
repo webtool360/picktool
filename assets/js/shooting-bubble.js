@@ -2,8 +2,8 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const colors = ['#FF5252', '#4CAF50', '#2196F3', '#FFEB3B'];
 let bubbles = [];
-let projectile = { x: 200, y: 350, dx: 0, dy: 0, color: colors[0], active: false };
 let gameActive = false;
+let projectile = { x: 200, y: 360, dx: 0, dy: 0, color: colors[0], active: false };
 
 function createGrid() {
     bubbles = [];
@@ -14,59 +14,39 @@ function createGrid() {
     }
 }
 
-// Find all connected bubbles of the same color
-function getConnectedGroup(index, color, group = []) {
-    if (index < 0 || index >= bubbles.length || !bubbles[index].active || bubbles[index].color !== color || group.includes(index)) {
-        return group;
-    }
-    group.push(index);
-    // Look for neighbors (simple distance check)
-    bubbles.forEach((b, i) => {
-        if (b.active && b.color === color && Math.hypot(bubbles[index].x - b.x, bubbles[index].y - b.y) < 60) {
-            getConnectedGroup(i, color, group);
-        }
-    });
-    return group;
-}
-
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+    // Draw Bubbles
     bubbles.forEach(b => {
         if (!b.active) return;
-        if (b.y > 340) { gameActive = false; alert("Game Over! Line reached."); }
         ctx.fillStyle = b.color;
         ctx.beginPath(); ctx.arc(b.x, b.y, 18, 0, Math.PI*2); ctx.fill();
     });
     
+    // Draw Shooter (Fixed at bottom center)
     ctx.fillStyle = '#333';
-    ctx.fillRect(190, 360, 20, 40);
+    ctx.fillRect(180, 360, 40, 40); 
     
+    // Draw Projectile
     if (projectile.active) {
-        projectile.x += projectile.dx; projectile.y += projectile.dy;
+        projectile.x += projectile.dx;
+        projectile.y += projectile.dy;
         ctx.fillStyle = projectile.color;
         ctx.beginPath(); ctx.arc(projectile.x, projectile.y, 18, 0, Math.PI*2); ctx.fill();
         
         if (projectile.x < 18 || projectile.x > 382) projectile.dx *= -1;
         
+        // Simple Collision
         bubbles.forEach((b, i) => {
             if (b.active && Math.hypot(projectile.x - b.x, projectile.y - b.y) < 36) {
-                const group = getConnectedGroup(i, projectile.color);
-                
-                // Rule: If total count >= 3 (Group + Projectile), Pop them
-                if (group.length + 1 >= 3) {
-                    group.forEach(idx => bubbles[idx].active = false);
-                } else {
-                    // Rule: If total count < 3, add projectile to grid
-                    bubbles.push({ x: b.x, y: b.y - 40, color: projectile.color, active: true });
-                }
-                
+                if (projectile.color === b.color) b.active = false; // Pop
                 projectile.active = false;
-                projectile.x = 200; projectile.y = 350;
+                projectile.x = 200; projectile.y = 360;
                 projectile.color = colors[Math.floor(Math.random() * colors.length)];
             }
         });
-        if (projectile.y < 0) { projectile.active = false; projectile.x = 200; projectile.y = 350; }
+        if (projectile.y < 0) { projectile.active = false; projectile.x = 200; projectile.y = 360; }
     }
     if (gameActive) requestAnimationFrame(draw);
 }
@@ -87,6 +67,15 @@ function startGame(seconds) {
     draw();
 }
 
+canvas.addEventListener('click', (e) => {
+    if (!gameActive || projectile.active) return;
+    const rect = canvas.getBoundingClientRect();
+    const angle = Math.atan2((e.clientY - rect.top) - 360, (e.clientX - rect.left) - 200);
+    projectile.dx = Math.cos(angle) * 6;
+    projectile.dy = Math.sin(angle) * 6;
+    projectile.active = true;
+});
+
 createGrid();
-ctx.fillStyle = "#333"; ctx.fillText("Tap time to play", 150, 200);
-        
+draw(); // Draw static state before start
+    
