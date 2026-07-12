@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onet Fruit Classic</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            padding: 20px; 
+            background-color: #f4f4f9; 
+            text-align: center; 
+            margin: 0; 
+        }
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 400px; 
+            margin: 0 auto 20px; 
+            padding-top: 10px; 
+        }
+        .back-btn { 
+            text-decoration: none; 
+            color: #007bff; 
+            font-weight: bold; 
+            font-size: 16px; 
+        }
+        .score-board { 
+            font-size: 18px; 
+            font-weight: bold; 
+            background: #fff; 
+            padding: 8px 15px; 
+            border-radius: 20px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        
+        h2 { margin-top: 0; color: #333; }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+            background: #8D6E63; /* Wood texture color */
+            padding: 8px;
+            border-radius: 8px;
+            margin: 0 auto;
+            max-width: 100%;
+            width: 400px; 
+            box-sizing: border-box;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .tile {
+            aspect-ratio: 1;
+            background: #FFFDE7;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(16px, 6vw, 26px); /* Responsive emoji size */
+            cursor: pointer;
+            box-shadow: 0 3px 0 #D7CCC8;
+            user-select: none;
+            transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+        }
+        .tile:active:not(.empty) {
+            transform: translateY(3px);
+            box-shadow: 0 0 0 #D7CCC8;
+        }
+        .tile.empty {
+            background: transparent;
+            box-shadow: none;
+            cursor: default;
+        }
+        .tile.selected {
+            background: #B2EBF2;
+            border: 2px solid #00BCD4;
+            box-shadow: 0 1px 0 #00ACC1;
+            transform: translateY(2px);
+            box-sizing: border-box;
+        }
+
+        .controls { margin-top: 25px; }
+        .btn { 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: 25px; 
+            background: #E91E63; 
+            color: white; 
+            font-weight: bold; 
+            font-size: 16px; 
+            cursor: pointer; 
+            margin: 0 8px; 
+            box-shadow: 0 4px 0 #C2185B; 
+            transition: all 0.1s; 
+        }
+        .btn:active { 
+            transform: translateY(4px); 
+            box-shadow: 0 0 0 #C2185B; 
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html" class="back-btn">&larr; Back</a>
+        <div class="score-board">Score: <span id="score">0</span></div>
+    </div>
+    
+    <h2>Onet Fruit Classic</h2>
+    
+    <div id="game-board"></div>
+    
+    <div class="controls">
+        <button class="btn" onclick="initGame()">New Game</button>
+        <button class="btn" onclick="shuffleGrid()">Shuffle</button>
+    </div>
+
+    <script>
+        // The game grid is 10x10 to allow empty padding on the outside for wrapping path lines.
+        const COLS = 10;
+        const ROWS = 10;
+        let grid = [];
+        let score = 0;
+        let tilesLeft = 0;
+        let selected = null;
+
+        const fruits = ['🍎','🍌','🍉','🍇','🍓','🍒','🍍','🍊','🍋','🥝','🥥','🍈','🍑','🥭','🍐','🍏'];
+
+        function initGame() {
+            score = 0;
+            tilesLeft = 64;
+            selected = null;
+            document.getElementById('score').innerText = score;
+            
+            // Build logic grid initialized to null
+            grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(null));
+            
+            // Create a shuffled deck of 64 fruits (16 types x 4 instances)
+            let deck = [];
+            for (let i = 0; i < 16; i++) {
+                for (let j = 0; j < 4; j++) deck.push(fruits[i]);
+            }
+            deck.sort(() => Math.random() - 0.5);
+            
+            const board = document.getElementById('game-board');
+            board.innerHTML = '';
+            
+            let idx = 0;
+            for (let y = 1; y <= 8; y++) {
+                for (let x = 1; x <= 8; x++) {
+                    const fruit = deck[idx++];
+                    grid[y][x] = fruit;
+                    
+                    const tile = document.createElement('div');
+                    tile.className = 'tile';
+                    tile.id = `tile-${x}-${y}`;
+                    tile.innerText = fruit;
+                    tile.onclick = () => clickTile(x, y);
+                    
+                    board.appendChild(tile);
+                }
+            }
+        }
+
+        function clickTile(x, y) {
+            if (grid[y][x] === null) return; // Ignore already eliminated spots
+
+            if (!selected) {
+                selected = {x, y};
+                document.getElementById(`tile-${x}-${y}`).classList.add('selected');
+                return;
+            }
+
+            if (selected.x === x && selected.y === y) {
+                document.getElementById(`tile-${x}-${y}`).classList.remove('selected');
+                selected = null;
+                return;
+            }
+
+            if (grid[selected.y][selected.x] === grid[y][x]) {
+                if (canConnect(selected.x, selected.y, x, y)) {
+                    // Match found! Hide elements.
+                    document.getElementById(`tile-${selected.x}-${selected.y}`).className = 'tile empty';
+                    document.getElementById(`tile-${selected.x}-${selected.y}`).innerText = '';
+                    document.getElementById(`tile-${x}-${y}`).className = 'tile empty';
+                    document.getElementById(`tile-${x}-${y}`).innerText = '';
+                    
+                    grid[selected.y][selected.x] = null;
+                    grid[y][x] = null;
+                    
+                    selected = null;
+                    score += 10;
+                    document.getElementById('score').innerText = score;
+                    
+                    tilesLeft -= 2;
+                    if (tilesLeft === 0) {
+                        setTimeout(() => alert("You Win! Final Score: " + score), 300);
+                    }
+                    return;
+                }
+            }
+
+            // Mismatch or unconnectable - switch selection to new tile
+            document.getElementById(`tile-${selected.x}-${selected.y}`).classList.remove('selected');
+            selected = {x, y};
+            document.getElementById(`tile-${x}-${y}`).classList.add('selected');
+        }
+
+        function checkLine(x1, y1, x2, y2) {
+            if (x1 !== x2 && y1 !== y2) return false;
+            if (x1 === x2) {
+                let min = Math.min(y1, y2);
+                let max = Math.max(y1, y2);
+                for (let y = min + 1; y < max; y++) {
+                    if (grid[y][x1] !== null) return false;
+                }
+                return true;
+            } else {
+                let min = Math.min(x1, x2);
+                let max = Math.max(x1, x2);
+                for (let x = min + 1; x < max; x++) {
+                    if (grid[y1][x] !== null) return false;
+                }
+                return true;
+            }
+        }
+
+        function canConnect(x1, y1, x2, y2) {
+            // 0 Turns (Direct straight Line)
+            if (checkLine(x1, y1, x2, y2)) return true;
+
+            // 1 Turn (L-Shape Connection)
+            if (grid[y2][x1] === null && checkLine(x1, y1, x1, y2) && checkLine(x1, y2, x2, y2)) return true;
+            if (grid[y1][x2] === null && checkLine(x1, y1, x2, y1) && checkLine(x2, y1, x2, y2)) return true;
+
+            // 2 Turns (Z-Shape or U-Shape Connection)
+            for (let i = -1; i <= 1; i += 2) {
+                // Scan Horizontally for empty corners
+                let x = x1 + i;
+                while (x >= 0 && x < COLS && grid[y1][x] === null) {
+                    if (grid[y2][x] === null && checkLine(x, y1, x, y2) && checkLine(x, y2, x2, y2)) return true;
+                    x += i;
+                }
+                // Scan Vertically for empty corners
+                let y = y1 + i;
+                while (y >= 0 && y < ROWS && grid[y][x1] === null) {
+                    if (grid[y][x2] === null && checkLine(x1, y, x2, y) && checkLine(x2, y, x2, y2)) return true;
+                    y += i;
+                }
+            }
+            return false;
+        }
+
+        function shuffleGrid() {
+            let remaining = [];
+            for (let y = 1; y <= 8; y++) {
+                for (let x = 1; x <= 8; x++) {
+                    if (grid[y][x] !== null) remaining.push(grid[y][x]);
+                }
+            }
+            if (remaining.length === 0) return;
+            
+            remaining.sort(() => Math.random() - 0.5);
+            let idx = 0;
+            
+            for (let y = 1; y <= 8; y++) {
+                for (let x = 1; x <= 8; x++) {
+                    if (grid[y][x] !== null) {
+                        grid[y][x] = remaining[idx++];
+                        document.getElementById(`tile-${x}-${y}`).innerText = grid[y][x];
+                    }
+                }
+            }
+            
+            if (selected) {
+                document.getElementById(`tile-${selected.x}-${selected.y}`).classList.remove('selected');
+                selected = null;
+            }
+        }
+
+        // Generate the board instantly on load
+        window.onload = initGame;
+    </script>
+</body>
+          </html>
+          
