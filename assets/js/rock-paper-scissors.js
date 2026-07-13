@@ -1,46 +1,70 @@
-let playerScore = 0;
-let botScore = 0;
+let p1Score = 0;
+let p2Score = 0;
+let currentPlayer = 1;
+let p1Choice = "";
 
-function playGame(playerChoice) {
-    const choices = ['rock', 'paper', 'scissors'];
-    const botChoice = choices[Math.floor(Math.random() * 3)];
-    
+function playTurn(choice) {
+    const statusDisplay = document.getElementById('status');
     const resultMessage = document.getElementById('result-message');
     
-    // Map choices to emojis for the result text
     const emojiMap = {
         'rock': '🪨',
         'paper': '📄',
         'scissors': '✂️'
     };
 
-    if (playerChoice === botChoice) {
-        resultMessage.innerText = `Draw! You both chose ${emojiMap[playerChoice]}`;
-        resultMessage.style.color = "#e67e22"; // Orange
-    } else if (
-        (playerChoice === 'rock' && botChoice === 'scissors') ||
-        (playerChoice === 'paper' && botChoice === 'rock') ||
-        (playerChoice === 'scissors' && botChoice === 'paper')
-    ) {
-        playerScore++;
-        document.getElementById('player-score').innerText = playerScore;
-        resultMessage.innerText = `You Win! ${emojiMap[playerChoice]} beats ${emojiMap[botChoice]}`;
-        resultMessage.style.color = "#27ae60"; // Green
+    if (currentPlayer === 1) {
+        // Player 1 makes a move, hide it, and switch to Player 2
+        p1Choice = choice;
+        currentPlayer = 2;
+        
+        statusDisplay.innerText = "Player 2's Turn";
+        resultMessage.innerText = "Player 1 locked in! Player 2, choose your weapon.";
+        resultMessage.style.color = "#f1c40f"; // Yellow text
     } else {
-        botScore++;
-        document.getElementById('bot-score').innerText = botScore;
-        resultMessage.innerText = `You Lose! ${emojiMap[botChoice]} beats ${emojiMap[playerChoice]}`;
-        resultMessage.style.color = "#e74c3c"; // Red
+        // Player 2 makes a move, calculate winner
+        let p2Choice = choice;
+        
+        let matchResult = `Player 1: ${emojiMap[p1Choice]} vs Player 2: ${emojiMap[p2Choice]}<br>`;
+
+        if (p1Choice === p2Choice) {
+            matchResult += "It's a Draw! 🤝";
+            resultMessage.style.color = "white";
+        } else if (
+            (p1Choice === 'rock' && p2Choice === 'scissors') ||
+            (p1Choice === 'paper' && p2Choice === 'rock') ||
+            (p1Choice === 'scissors' && p2Choice === 'paper')
+        ) {
+            p1Score++;
+            document.getElementById('p1-score').innerText = p1Score;
+            matchResult += "🎉 Player 1 Wins!";
+            resultMessage.style.color = "#2ecc71"; // Bright Green
+        } else {
+            p2Score++;
+            document.getElementById('p2-score').innerText = p2Score;
+            matchResult += "🎉 Player 2 Wins!";
+            resultMessage.style.color = "#2ecc71"; // Bright Green
+        }
+
+        // Show result and reset to Player 1's turn
+        resultMessage.innerHTML = matchResult;
+        currentPlayer = 1;
+        statusDisplay.innerText = "Player 1's Turn";
     }
 }
 
-function resetScore() {
-    playerScore = 0;
-    botScore = 0;
-    document.getElementById('player-score').innerText = playerScore;
-    document.getElementById('bot-score').innerText = botScore;
+function resetGame() {
+    p1Score = 0;
+    p2Score = 0;
+    currentPlayer = 1;
+    p1Choice = "";
+    
+    document.getElementById('p1-score').innerText = p1Score;
+    document.getElementById('p2-score').innerText = p2Score;
+    
+    document.getElementById('status').innerText = "Player 1's Turn";
     
     const resultMessage = document.getElementById('result-message');
-    resultMessage.innerText = "Choose your weapon!";
-    resultMessage.style.color = "#3b5998";
+    resultMessage.innerText = "Waiting for Player 1...";
+    resultMessage.style.color = "white";
 }
