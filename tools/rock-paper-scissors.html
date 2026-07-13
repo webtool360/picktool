@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - PickTool</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+            padding: 20px; 
+            text-align: center;
+        }
+        h2 { color: #3b5998; }
+        
+        .score-board {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .game-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .choice-btn {
+            font-size: 3em;
+            background-color: white;
+            border: 3px solid #3b5998;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        
+        .choice-btn:hover {
+            transform: scale(1.1);
+            background-color: #e0e5f2;
+        }
+        
+        .result-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            min-height: 40px;
+            color: #3b5998;
+        }
+
+        .reset-btn { 
+            margin-top: 25px; 
+            padding: 10px 25px; 
+            font-size: 1.1em; 
+            background-color: #3b5998; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        .reset-btn:hover { background-color: #2d4373; }
+        
+        .back-link { 
+            margin-top: 30px; 
+            text-decoration: none; 
+            color: #3b5998; 
+            font-weight: bold; 
+            font-size: 1.1em;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <h2>Rock Paper Scissors</h2>
+    
+    <div class="score-board">
+        <div>You: <span id="player-score">0</span></div>
+        <div>Bot: <span id="bot-score">0</span></div>
+    </div>
+
+    <div class="game-buttons">
+        <button class="choice-btn" onclick="playGame('rock')">🪨</button>
+        <button class="choice-btn" onclick="playGame('paper')">📄</button>
+        <button class="choice-btn" onclick="playGame('scissors')">✂️</button>
+    </div>
+
+    <div class="result-text" id="result-message">Choose your weapon!</div>
+
+    <button class="reset-btn" onclick="resetScore()">🔄 Reset Score</button>
+    <a href="../index.html" class="back-link">← Back to PickTool</a>
+
+    <!-- Step 2 Link -->
+    <script src="../assets/js/rock-paper-scissors.js"></script>
+</body>
+</html>
