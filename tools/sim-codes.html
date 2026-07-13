@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakistan SIM Codes - PickTool</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background-color: #f0f4f8; display: flex; justify-content: center; padding: 20px; font-family: sans-serif; }
+        .tool-container { background: white; border: 2px solid #3b5998; border-radius: 20px; padding: 20px; width: 100%; max-width: 400px; text-align: center; }
+        .rules { font-size: 0.9em; color: #555; margin-bottom: 20px; text-align: left; }
+        select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #3b5998; border-radius: 5px; }
+        .result-box { margin-top: 20px; text-align: left; border-top: 1px solid #ddd; padding-top: 10px; }
+        .code-item { background: #f9f9f9; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 4px solid #3b5998; }
+        .back-btn { display: block; margin-top: 20px; color: #3b5998; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="tool-container">
+    <h2>SIM Codes Tool</h2>
+    <div class="rules">
+        Select your SIM provider and the type of code you need to view. <br>
+        Check balance, subscribe to offers, or manage extra services easily.
+    </div>
+
+    <select id="provider" onchange="showCodes()">
+        <option value="">Select SIM Provider</option>
+        <option value="jazz">Jazz</option>
+        <option value="telenor">Telenor</option>
+        <option value="zong">Zong</option>
+        <option value="ufone">Ufone</option>
+    </select>
+
+    <select id="category" onchange="showCodes()">
+        <option value="">Select Category</option>
+        <option value="service">Service Codes</option>
+        <option value="package">Package Codes</option>
+        <option value="vas">VAS/Others</option>
+    </select>
+
+    <div id="results" class="result-box"></div>
+
+    <a href="../index.html" class="back-btn">← Back to PickTool Home</a>
+</div>
+
+<script src="../assets/js/sim-codes.js"></script>
+</body>
+</html>
