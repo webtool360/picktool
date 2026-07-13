@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe - PickTool</title>
-    <!-- Link to your main stylesheet -->
+    <!-- Link to main CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body { 
@@ -19,7 +19,6 @@
         h2 { color: #3b5998; margin-bottom: 5px; }
         .status { margin-bottom: 20px; font-size: 1.2em; font-weight: bold; color: #333; }
         
-        /* Game Board Grid */
         .board { 
             display: grid; 
             grid-template-columns: repeat(3, 100px); 
@@ -43,7 +42,6 @@
         }
         .cell:hover { background-color: #e0e5f2; }
         
-        /* Buttons and Links */
         .reset-btn { 
             margin-top: 25px; 
             padding: 10px 25px; 
@@ -86,72 +84,7 @@
     <button class="reset-btn" onclick="resetGame()">🔄 Restart Game</button>
     <a href="../index.html" class="back-link">← Back to PickTool</a>
 
-    <script>
-        let board = ["", "", "", "", "", "", "", "", ""];
-        let currentPlayer = "X";
-        let isGameActive = true;
-        const statusDisplay = document.getElementById('status');
-        const cells = document.querySelectorAll('.cell');
-
-        const winningConditions = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
-            [0, 4, 8], [2, 4, 6]             // Diagonal
-        ];
-
-        function makeMove(index) {
-            // Check if cell is empty and game is active
-            if (board[index] === "" && isGameActive) {
-                board[index] = currentPlayer;
-                cells[index].innerText = currentPlayer;
-                
-                // Color X in blue, O in red
-                cells[index].style.color = currentPlayer === "X" ? "#3b5998" : "#e74c3c";
-                
-                checkWinner();
-            }
-        }
-
-        function checkWinner() {
-            let roundWon = false;
-            for (let i = 0; i < winningConditions.length; i++) {
-                const [a, b, c] = winningConditions[i];
-                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                    roundWon = true;
-                    break;
-                }
-            }
-
-            if (roundWon) {
-                statusDisplay.innerText = `🎉 Player ${currentPlayer} Wins! 🎉`;
-                statusDisplay.style.color = "#27ae60"; // Green for win
-                isGameActive = false;
-                return;
-            }
-
-            if (!board.includes("")) {
-                statusDisplay.innerText = "It's a Draw! 🤝";
-                statusDisplay.style.color = "#e67e22"; // Orange for draw
-                isGameActive = false;
-                return;
-            }
-
-            // Switch turns
-            currentPlayer = currentPlayer === "X" ? "O" : "X";
-            statusDisplay.innerText = `Player ${currentPlayer}'s Turn`;
-            statusDisplay.style.color = "#333";
-        }
-
-        function resetGame() {
-            board = ["", "", "", "", "", "", "", "", ""];
-            currentPlayer = "X";
-            isGameActive = true;
-            statusDisplay.innerText = `Player ${currentPlayer}'s Turn`;
-            statusDisplay.style.color = "#333";
-            cells.forEach(cell => {
-                cell.innerText = "";
-            });
-        }
-    </script>
+    <!-- Link to the JS file -->
+    <script src="../assets/js/tic-tac-toe.js"></script>
 </body>
 </html>
