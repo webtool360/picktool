@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - PickTool</title>
+    <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        h2 { color: #3b5998; margin-bottom: 5px; }
+        .status { margin-bottom: 20px; font-size: 1.2em; font-weight: bold; color: #333; }
+        
+        /* Game Board Grid */
+        .board { 
+            display: grid; 
+            grid-template-columns: repeat(3, 100px); 
+            grid-gap: 5px; 
+            background-color: #3b5998; 
+            padding: 5px; 
+            border-radius: 10px;
+        }
+        .cell { 
+            width: 100px; 
+            height: 100px; 
+            background-color: white; 
+            font-size: 3em; 
+            font-weight: bold;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            cursor: pointer; 
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .cell:hover { background-color: #e0e5f2; }
+        
+        /* Buttons and Links */
+        .reset-btn { 
+            margin-top: 25px; 
+            padding: 10px 25px; 
+            font-size: 1.1em; 
+            background-color: #3b5998; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold;
+        }
+        .reset-btn:hover { background-color: #2d4373; }
+        .back-link { 
+            margin-top: 30px; 
+            text-decoration: none; 
+            color: #3b5998; 
+            font-weight: bold; 
+            font-size: 1.1em;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <h2>Tic-Tac-Toe</h2>
+    <div class="status" id="status">Player X's Turn</div>
+    
+    <div class="board" id="board">
+        <div class="cell" onclick="makeMove(0)"></div>
+        <div class="cell" onclick="makeMove(1)"></div>
+        <div class="cell" onclick="makeMove(2)"></div>
+        <div class="cell" onclick="makeMove(3)"></div>
+        <div class="cell" onclick="makeMove(4)"></div>
+        <div class="cell" onclick="makeMove(5)"></div>
+        <div class="cell" onclick="makeMove(6)"></div>
+        <div class="cell" onclick="makeMove(7)"></div>
+        <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+
+    <button class="reset-btn" onclick="resetGame()">🔄 Restart Game</button>
+    <a href="../index.html" class="back-link">← Back to PickTool</a>
+
+    <script>
+        let board = ["", "", "", "", "", "", "", "", ""];
+        let currentPlayer = "X";
+        let isGameActive = true;
+        const statusDisplay = document.getElementById('status');
+        const cells = document.querySelectorAll('.cell');
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
+            [0, 4, 8], [2, 4, 6]             // Diagonal
+        ];
+
+        function makeMove(index) {
+            // Check if cell is empty and game is active
+            if (board[index] === "" && isGameActive) {
+                board[index] = currentPlayer;
+                cells[index].innerText = currentPlayer;
+                
+                // Color X in blue, O in red
+                cells[index].style.color = currentPlayer === "X" ? "#3b5998" : "#e74c3c";
+                
+                checkWinner();
+            }
+        }
+
+        function checkWinner() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                statusDisplay.innerText = `🎉 Player ${currentPlayer} Wins! 🎉`;
+                statusDisplay.style.color = "#27ae60"; // Green for win
+                isGameActive = false;
+                return;
+            }
+
+            if (!board.includes("")) {
+                statusDisplay.innerText = "It's a Draw! 🤝";
+                statusDisplay.style.color = "#e67e22"; // Orange for draw
+                isGameActive = false;
+                return;
+            }
+
+            // Switch turns
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            statusDisplay.innerText = `Player ${currentPlayer}'s Turn`;
+            statusDisplay.style.color = "#333";
+        }
+
+        function resetGame() {
+            board = ["", "", "", "", "", "", "", "", ""];
+            currentPlayer = "X";
+            isGameActive = true;
+            statusDisplay.innerText = `Player ${currentPlayer}'s Turn`;
+            statusDisplay.style.color = "#333";
+            cells.forEach(cell => {
+                cell.innerText = "";
+            });
+        }
+    </script>
+</body>
+</html>
