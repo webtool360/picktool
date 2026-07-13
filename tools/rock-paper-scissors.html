@@ -14,64 +14,96 @@
             background-color: #f4f7f6; 
             margin: 0; 
             padding: 20px; 
-            text-align: center;
         }
-        h2 { color: #3b5998; }
         
+        /* The Rounded Container */
+        .game-container {
+            background-color: #3b5998;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        h2 { margin-top: 0; margin-bottom: 10px; }
+
+        /* Rules Section */
+        .rules-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .status {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #f1c40f; /* Yellow */
+            margin-bottom: 15px;
+        }
+
         .score-board {
             display: flex;
             justify-content: center;
             gap: 30px;
-            font-size: 1.5em;
+            font-size: 1.2em;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        
+
         .game-buttons {
             display: flex;
+            justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        
+
         .choice-btn {
-            font-size: 3em;
+            font-size: 2.5em;
             background-color: white;
-            border: 3px solid #3b5998;
+            border: none;
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-        
+
         .choice-btn:hover {
             transform: scale(1.1);
             background-color: #e0e5f2;
         }
-        
+
         .result-text {
-            font-size: 1.5em;
+            font-size: 1.2em;
             font-weight: bold;
-            min-height: 40px;
-            color: #3b5998;
+            min-height: 50px;
         }
 
         .reset-btn { 
-            margin-top: 25px; 
-            padding: 10px 25px; 
-            font-size: 1.1em; 
-            background-color: #3b5998; 
-            color: white; 
+            margin-top: 20px; 
+            padding: 10px 20px; 
+            font-size: 1em; 
+            background-color: white; 
+            color: #3b5998; 
             border: none; 
             border-radius: 8px; 
             cursor: pointer; 
             font-weight: bold;
         }
-        .reset-btn:hover { background-color: #2d4373; }
+        .reset-btn:hover { background-color: #e0e5f2; }
         
         .back-link { 
-            margin-top: 30px; 
+            display: inline-block;
+            margin-top: 25px; 
             text-decoration: none; 
             color: #3b5998; 
             font-weight: bold; 
@@ -82,25 +114,38 @@
 </head>
 <body>
 
-    <h2>Rock Paper Scissors</h2>
-    
-    <div class="score-board">
-        <div>You: <span id="player-score">0</span></div>
-        <div>Bot: <span id="bot-score">0</span></div>
+    <div class="game-container">
+        <h2>Rock Paper Scissors</h2>
+        
+        <div class="rules-box">
+            <strong>Rules (PvP):</strong><br>
+            • 🪨 Rock crushes ✂️ Scissors<br>
+            • ✂️ Scissors cuts 📄 Paper<br>
+            • 📄 Paper covers 🪨 Rock<br>
+            <em>Player 1 picks first (hidden), then Player 2 picks to reveal the winner!</em>
+        </div>
+
+        <div class="status" id="status">Player 1's Turn</div>
+
+        <div class="score-board">
+            <div>Player 1: <span id="p1-score">0</span></div>
+            <div>Player 2: <span id="p2-score">0</span></div>
+        </div>
+
+        <div class="game-buttons">
+            <button class="choice-btn" onclick="playTurn('rock')">🪨</button>
+            <button class="choice-btn" onclick="playTurn('paper')">📄</button>
+            <button class="choice-btn" onclick="playTurn('scissors')">✂️</button>
+        </div>
+
+        <div class="result-text" id="result-message">Waiting for Player 1...</div>
+
+        <button class="reset-btn" onclick="resetGame()">🔄 Reset Game</button>
     </div>
 
-    <div class="game-buttons">
-        <button class="choice-btn" onclick="playGame('rock')">🪨</button>
-        <button class="choice-btn" onclick="playGame('paper')">📄</button>
-        <button class="choice-btn" onclick="playGame('scissors')">✂️</button>
-    </div>
-
-    <div class="result-text" id="result-message">Choose your weapon!</div>
-
-    <button class="reset-btn" onclick="resetScore()">🔄 Reset Score</button>
     <a href="../index.html" class="back-link">← Back to PickTool</a>
 
-    <!-- Step 2 Link -->
     <script src="../assets/js/rock-paper-scissors.js"></script>
 </body>
-</html>
+    </html>
+    
