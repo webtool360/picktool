@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Fruit - PickTool</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background-color: #f0f4f8; display: flex; justify-content: center; padding: 20px; font-family: sans-serif; margin: 0; }
+        .tool-container { background: white; border: 2px solid #3b5998; border-radius: 20px; padding: 20px; width: 100%; max-width: 420px; text-align: center; box-sizing: border-box; }
+        
+        #collection-bar { display: flex; justify-content: center; gap: 5px; background: #ffeaa7; padding: 10px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #fdcb6e; height: 50px; }
+        .slot { width: 50px; height: 50px; background: white; border: 1px solid #ccc; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 25px; }
+        
+        #game-board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; margin-bottom: 20px; }
+        .tile { width: 55px; height: 55px; background: #e1e1e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; transition: 0.2s; }
+        .tile:hover { background: #dcdde1; }
+        
+        .controls { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .back-link { display: inline-block; margin-top: 20px; color: #3b5998; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="tool-container">
+    <div id="collection-bar">
+        <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+        <div class="slot"></div><div class="slot"></div><div class="slot"></div>
+    </div>
+
+    <div id="game-board"></div>
+
+    <div class="controls">
+        <button onclick="shuffleBoard()" style="padding: 10px 20px; background: #3b5998; color: white; border: none; border-radius: 8px;">Shuffle 🔄</button>
+    </div>
+    
+    <a href="../index.html" class="back-link">← Back to PickTool Home</a>
+</div>
+
+<script src="../assets/js/choose-fruit.js"></script>
+</body>
+</html>
