@@ -111,6 +111,8 @@
             font-size: 16px;
             margin-top: 5px;
         }
+        /* Ad container styling */
+        .ad-container { margin-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
@@ -125,10 +127,23 @@
             <button class="btn" onclick="shuffleGrid()">Shuffle</button>
         </div>
         
-        <!-- The instruction caption placed above the back link -->
         <p class="instructions">Connect two matching fruits with a line of up to two corners.</p>
         
         <a href="../index.html" class="back-link">&larr; Back to PickTool Home</a>
+
+        <!-- Non-intrusive ad placement -->
+        <div class="ad-container">
+            <script>
+                atOptions = {
+                    'key' : 'be0e2dff2e618dbdd1d0dd94294cffc8',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/be0e2dff2e618dbdd1d0dd94294cffc8/invoke.js"></script>
+        </div>
     </div>
 
     <!-- JS linked using the standardized path -->
