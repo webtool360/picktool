@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knife Hit - PickTool</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background-color: #f0f4f8; display: flex; justify-content: center; padding: 20px; font-family: sans-serif; margin: 0; }
+        .tool-container { background: white; border: 2px solid #3b5998; border-radius: 20px; padding: 20px; width: 100%; max-width: 420px; text-align: center; box-sizing: border-box; }
+        
+        #game-area { position: relative; width: 300px; height: 400px; margin: 20px auto; background: #0a192f; border-radius: 10px; overflow: hidden; }
+        #target { position: absolute; width: 100px; height: 100px; top: 100px; left: 100px; background: orange; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; transition: transform 0.1s linear; }
+        .knife { position: absolute; width: 10px; height: 40px; background: silver; bottom: 50px; left: 145px; transform-origin: bottom center; }
+        
+        .ui-panel { margin-top: 15px; font-weight: bold; color: #3b5998; }
+        .back-link { display: inline-block; margin-top: 20px; color: #3b5998; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="tool-container">
+    <div class="ui-panel" id="level-display">Level 1</div>
+    <div id="game-area" onclick="throwKnife()">
+        <div id="target">🍊</div>
+    </div>
+    <div id="knife-inventory">Knives Left: 10</div>
+    
+    <a href="../index.html" class="back-link">← Back to PickTool Home</a>
+</div>
+
+<script src="../assets/js/knife-hit.js"></script>
+</body>
+</html>
+
