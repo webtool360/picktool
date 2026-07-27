@@ -14,7 +14,7 @@
 
 .header h1 {
     color: white !important;
-    font-size: 48px !important; /* Significantly larger title text */
+    font-size: 72px !important; /* Significantly larger title text */
     font-weight: 800;
     margin-bottom: 30px !important; /* Space between title and search bar */
     letter-spacing: 2px;
@@ -22,7 +22,7 @@
 }
 
 .search-bar {
-    width: 90% !important;
+    width: 75% !important;
     max-width: 600px !important; /* Much wider search bar */
     padding: 18px 25px !important; /* Taller search bar */
     border-radius: 35px !important;
