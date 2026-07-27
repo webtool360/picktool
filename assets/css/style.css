@@ -12,9 +12,9 @@
 
 .header h1 {
     color: white;
-    font-size: 42px !important; /* !important forces the browser to apply this size */
+    font-size: 48px !important; /* !important forces the browser to apply this size */
     font-weight: 900;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     letter-spacing: 2px;
 }
 
