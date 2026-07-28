@@ -49,6 +49,7 @@
 .tool-card { 
     background: white; 
     padding: 25px; 
+    font-size: 28px !important;
     text-align: center; 
     border-radius: 12px; 
     text-decoration: none; 
@@ -103,6 +104,7 @@ input, select, button {
 button {
     background-color: #3b5998;
     color: white;
+    font-size: 24px !important;
     font-weight: bold;
     cursor: pointer;
 }
