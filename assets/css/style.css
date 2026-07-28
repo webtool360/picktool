@@ -205,3 +205,86 @@ padding:20px;
     background-color: #a0a0a0;
     cursor: not-allowed;
 }
+/* ==========================================
+   AD INTERSTITIAL MODAL STYLES
+   ========================================== */
+
+/* Fixed Full-Screen Centered Overlay */
+.ad-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* Dark dimmed background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Ensures overlay stays on top */
+}
+
+/* Centered Floating Card */
+.ad-modal-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 340px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+.ad-modal-card h3 {
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+    font-size: 18px;
+}
+
+/* 2-Line Skip Instruction Box */
+.skip-instructions {
+    background-color: #eef3fb;
+    border-left: 3px solid #3b5998;
+    color: #333333;
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* 320x50 Banner Container */
+.ad-box-banner {
+    width: 320px;
+    height: 50px;
+    margin: 12px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+}
+
+/* Modal Action Button */
+.ad-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b5998;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Disabled State during 5s Timer */
+.ad-btn:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
