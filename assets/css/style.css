@@ -14,7 +14,7 @@
 
 .header h1 {
     color: white !important;
-    font-size: 96px !important; /* Significantly larger title text */
+    font-size: clamp(42px, 12vw, 96px) !important;
     font-weight: 800;
     margin-bottom: 30px !important; /* Space between title and search bar */
     letter-spacing: 2px;
