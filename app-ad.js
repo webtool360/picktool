@@ -1,56 +1,97 @@
-// Interstitial Ad Logic for Useful Apps Container
-let adTimer = null;
+// ==========================================
+// AD INTERSTITIAL & SMARTLINK REDIRECT JS
+// ==========================================
+
+// Replace with your actual Adsterra Smartlink / Direct Link URL
+const ADSTERRA_SMARTLINK = "https://www.highrevenuegate.com/YOUR_SMARTLINK_ID";
+
 let targetAppUrl = "";
+let initialTimerInterval = null;
+let decisionTimerInterval = null;
 
-function handleAppClick(event) {
-    const link = event.currentTarget;
-    const appUrl = link.getAttribute("href");
+// Event Listener: Attach ad trigger to all elements with class 'app-link'
+document.addEventListener("DOMContentLoaded", function () {
+    const appLinks = document.querySelectorAll(".app-link");
 
-    if (appUrl && appUrl !== "#") {
-        event.preventDefault(); // Pause immediate opening
-        targetAppUrl = appUrl;
+    appLinks.forEach(function (element) {
+        element.addEventListener("click", function (event) {
+            event.preventDefault(); // Stop instant navigation
 
-        let timeLeft = 5; // 5 second countdown
-        const modal = document.getElementById("appAdModal");
-        const countdownEl = document.getElementById("adCountdown");
-        const skipBtn = document.getElementById("skipAdBtn");
+            // Get target link from data-app-url or href attribute
+            targetAppUrl = this.getAttribute("data-app-url") || this.getAttribute("href");
 
-        modal.style.display = "flex";
-        countdownEl.innerText = timeLeft;
-        skipBtn.disabled = true;
-        skipBtn.classList.remove("active");
-        skipBtn.innerText = "Please wait...";
-
-        if (adTimer) clearInterval(adTimer);
-
-        adTimer = setInterval(() => {
-            timeLeft--;
-            countdownEl.innerText = timeLeft;
-
-            if (timeLeft <= 0) {
-                clearInterval(adTimer);
-                skipBtn.disabled = false;
-                skipBtn.classList.add("active");
-                skipBtn.innerText = "Continue to App ➔";
-            }
-        }, 1000);
-    }
-}
-
-function skipAdNow() {
-    if (targetAppUrl) {
-        window.open(targetAppUrl, "_blank");
-        document.getElementById("appAdModal").style.display = "none";
-    }
-}
-
-// Automatically attach only to links inside #tab-useful-app
-document.addEventListener("DOMContentLoaded", () => {
-    const appContainer = document.getElementById("tab-useful-app");
-    if (appContainer) {
-        const appLinks = appContainer.querySelectorAll("a.tool-card");
-        appLinks.forEach(link => {
-            link.addEventListener("click", handleAppClick);
+            // Open the Ad Modal and start timer
+            showAdModal();
         });
-    }
+    });
 });
+
+// Function to show modal and run initial 5-second timer
+function showAdModal() {
+    const modal = document.getElementById("adModal");
+    const btn = document.getElementById("adContinueBtn");
+
+    if (!modal || !btn) return;
+
+    // Reset UI and display modal
+    modal.style.display = "flex";
+    btn.disabled = true;
+    
+    let initialSeconds = 5;
+    btn.innerHTML = `Please wait (<span id="adTimer">${initialSeconds}</span>s)`;
+
+    // Clear any active timers
+    clearInterval(initialTimerInterval);
+    clearInterval(decisionTimerInterval);
+
+    // 1. Initial 5-second countdown phase
+    initialTimerInterval = setInterval(function () {
+        initialSeconds--;
+        const timerSpan = document.getElementById("adTimer");
+        
+        if (timerSpan) {
+            timerSpan.textContent = initialSeconds;
+        }
+
+        if (initialSeconds <= 0) {
+            clearInterval(initialTimerInterval);
+            startDecisionPhase(btn);
+        }
+    }, 1000);
+}
+
+// Function for secondary 3-second decision phase
+function startDecisionPhase(btn) {
+    let decisionSeconds = 3;
+    btn.disabled = false;
+    btn.textContent = `Continue to App (${decisionSeconds}s)`;
+
+    // User clicked within 3 seconds -> Go to target URL (Play Store / App)
+    btn.onclick = function () {
+        clearInterval(decisionTimerInterval);
+        closeAdModal();
+        window.location.href = targetAppUrl;
+    };
+
+    // 2. Start 3-second countdown
+    decisionTimerInterval = setInterval(function () {
+        decisionSeconds--;
+
+        if (decisionSeconds > 0) {
+            btn.textContent = `Continue to App (${decisionSeconds}s)`;
+        } else {
+            // User failed to click within 3 seconds -> Trigger Smartlink (Ad)
+            clearInterval(decisionTimerInterval);
+            closeAdModal();
+            window.location.href = ADSTERRA_SMARTLINK;
+        }
+    }, 1000);
+}
+
+// Function to close ad modal overlay
+function closeAdModal() {
+    const modal = document.getElementById("adModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
