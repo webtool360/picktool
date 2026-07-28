@@ -318,31 +318,33 @@
     <script src="app-ad.js"></script>
 
 
-    <!-- AD MODAL (FOR USEFUL APPS ONLY) -->
-    <div id="appAdModal" class="ad-modal">
-        <div class="ad-content">
-            <p class="ad-timer-text">Redirecting to app in <span id="adCountdown">5</span>s...</p>
+        <!-- AD MODAL (FOR USEFUL APPS ONLY) -->
+    <div id="adModal" class="ad-modal-overlay" style="display: none;">
+        <div class="ad-modal-card">
+            <h3>Sponsored Advertisement</h3>
+            <p class="ad-subtitle">Please wait or click below to proceed</p>
             
-            <!-- CLICKABLE SMARTLINK AD BOX -->
-            <a href="https://www.effectivecpmnetwork.com/c1zfmzeyf?key=f27990728598253b0a867a89e433d884" target="_blank" rel="noopener" class="ad-box" style="display: block; text-decoration: none;">
-                <div style="padding: 40px 10px; background: #eef3fb; border-radius: 8px; border: 2px dashed #3b5998;">
-                    <p style="color: #3b5998; font-weight: bold; font-size: 18px; margin-bottom: 5px;">🔥 Exclusive Offer</p>
-                    <p style="color: #555; font-size: 14px;">Tap here to check featured content while you wait!</p>
-                                <script>
-                atOptions = {
-                    'key' : '535339770623d587c25a4864f7e18b13',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-                                </script>
-                </div>
-            </a>
+            <!-- 320x50 Ad Banner Container -->
+            <div id="adContainer" class="ad-box-banner">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'be0e2dff2e618dbdd1d0dd94294cffc8',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/be0e2dff2e618dbdd1d0dd94294cffc8/invoke.js"></script>
+            </div>
 
-            <button id="skipAdBtn" class="skip-btn" onclick="skipAdNow()" disabled>Please wait...</button>
+            <!-- Action / Redirect Button -->
+            <button id="adContinueBtn" class="ad-btn" disabled>
+                Please wait (<span id="adTimer">5</span>s)
+            </button>
         </div>
     </div>
+
 
     <!-- General Adsterra Network Scripts -->
     <script src="https://pl30385674.effectivecpmnetwork.com/7e/f4/59/7ef459c38b37c992eff78968309b4477.js"></script>
