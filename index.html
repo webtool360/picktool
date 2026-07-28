@@ -12,15 +12,15 @@
             navigator.serviceWorker.register('sw.js');
         }
     </script>
+    
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VLXHSDT7K3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLXHSDT7K3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-VLXHSDT7K3');
-</script>
+      gtag('config', 'G-VLXHSDT7K3');
     </script>
 
     <style>
@@ -76,8 +76,7 @@
     <div class="tab-container" id="tabContainer">
         <button class="tab-btn active" data-target="tab-tools" onclick="openTab(event, 'tab-tools')">🛠️TOOLS</button>
         <button class="tab-btn" data-target="tab-games" onclick="openTab(event, 'tab-games')">🎮GAMES</button>
-
-        <button class="tab-btn active" data-target="tab-useful-app" onclick="openTab(event, 'tab-useful-app')">📲 APPS</button>
+        <button class="tab-btn" data-target="tab-useful-app" onclick="openTab(event, 'tab-useful-app')">📲 APPS</button>
         <button class="tab-btn" data-target="tab-more" onclick="openTab(event, 'tab-more')">📝MORE</button>
     </div>
 
@@ -102,10 +101,7 @@
             <a href="tools/phone-codes.html" class="tool-card">📱 Device Secret Codes</a>
             <a href="tools/lucky-wheel.html" class="tool-card">🎡 Lucky Wheel</a>
 
-        
             <a href="https://www.effectivecpmnetwork.com/hmtjfbw6?key=bbc643f301f31828c76eeb3c6a3cf18f" class="tool-card" style="background-color: #3b5998; color: white;">🎁 Daily Rewards</a>
-            
-            
         </div>
 
         <!-- 2. GAMES TAB -->
@@ -117,20 +113,18 @@
             <a href="tools/tic-tac-toe.html" class="tool-card">❌⭕ Tic-Tac-Toe</a>
             <a href="tools/wrong-way.html" class="tool-card">🚧 Wrong Way</a>
 
-        
             <a href="https://www.effectivecpmnetwork.com/t6xupky9vb?key=504b7cb1b98b635357ff7b8a70b92410" class="tool-card" style="background-color: #3b5998; color: white;">🎯 Special Deals</a>
         </div>
 
-<!-- USEFUL APPS TAB -->
-<div class="tool-grid tab-content tab-hidden" id="tab-useful-app">
-        <!-- Google Translate App Link -->
-    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" class="tool-card" target="_blank">
-        🌐 Google Translate
-    </a>
-
-</div>
+        <!-- 3. USEFUL APPS TAB -->
+        <div class="tool-grid tab-content tab-hidden" id="tab-useful-app">
+            <!-- Google Translate App Link -->
+            <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" class="tool-card" target="_blank">
+                🌐 Google Translate
+            </a>
+        </div>
         
-        <!-- 3. MORE TAB -->
+        <!-- 4. MORE TAB -->
         <div class="tool-grid tab-content tab-hidden" id="tab-more">
             <a href="tools/coming-soon.html" class="tool-card">⏳ Coming Soon</a>
             <a href="tools/about.html" class="tool-card">ℹ️ About Us</a>
@@ -238,7 +232,7 @@
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 PickTool. All rights reserved.</p>
-        <p>Place Your Ads Here: Contact Us Via Whatsapp      (+92 314 9037606)</p>
+        <p>Place Your Ads Here: Contact Us Via Whatsapp (+92 314 9037606)</p>
     </footer>
 
     <!-- Javascript for Tabs & Search -->
@@ -266,35 +260,36 @@
             } else {
                 tabContainer.style.display = 'flex';
                 let activeBtn = document.querySelector('.tab-btn.active');
-                activeBtn.click();
+                if (activeBtn) activeBtn.click();
             }
 
             cards.forEach(card => {
                 card.style.display = card.innerText.toLowerCase().includes(filter) ? "" : "none";
             });
         });
-</script>
+    </script>
 
-<script src="assets/js/app-ad.js"></script>
+    <!-- App Ad Logic Script -->
+    <script src="assets/js/app-ad.js"></script>
 
-<!-- AD MODAL (FOR USEFUL APPS ONLY) -->
-<div id="appAdModal" class="ad-modal">
-    <div class="ad-content">
-        <p class="ad-timer-text">Redirecting to app in <span id="adCountdown">5</span>s...</p>
-        
-        <!-- CLICKABLE SMARTLINK AD BOX -->
-        <a href="https://www.effectivecpmnetwork.com/c1zfmzeyf?key=f27990728598253b0a867a89e433d884" target="_blank" rel="noopener" class="ad-box" style="display: block; text-decoration: none;">
-            <div style="padding: 40px 10px; background: #eef3fb; border-radius: 8px; border: 2px dashed #3b5998;">
-                <p style="color: #3b5998; font-weight: bold; font-size: 18px; margin-bottom: 5px;">🔥 Exclusive Offer</p>
-                <p style="color: #555; font-size: 14px;">Tap here to check featured content while you wait!</p>
-            </div>
-        </a>
+    <!-- AD MODAL (FOR USEFUL APPS ONLY) -->
+    <div id="appAdModal" class="ad-modal">
+        <div class="ad-content">
+            <p class="ad-timer-text">Redirecting to app in <span id="adCountdown">5</span>s...</p>
+            
+            <!-- CLICKABLE SMARTLINK AD BOX -->
+            <a href="https://www.effectivecpmnetwork.com/c1zfmzeyf?key=f27990728598253b0a867a89e433d884" target="_blank" rel="noopener" class="ad-box" style="display: block; text-decoration: none;">
+                <div style="padding: 40px 10px; background: #eef3fb; border-radius: 8px; border: 2px dashed #3b5998;">
+                    <p style="color: #3b5998; font-weight: bold; font-size: 18px; margin-bottom: 5px;">🔥 Exclusive Offer</p>
+                    <p style="color: #555; font-size: 14px;">Tap here to check featured content while you wait!</p>
+                </div>
+            </a>
 
-        <button id="skipAdBtn" class="skip-btn" onclick="skipAdNow()" disabled>Please wait...</button>
+            <button id="skipAdBtn" class="skip-btn" onclick="skipAdNow()" disabled>Please wait...</button>
+        </div>
     </div>
-</div>
 
-<!-- General Adsterra Network Scripts -->
-<script src="https://pl30385674.effectivecpmnetwork.com/7e/f4/59/7ef459c38b37c992eff78968309b4477.js"></script>
+    <!-- General Adsterra Network Scripts -->
+    <script src="https://pl30385674.effectivecpmnetwork.com/7e/f4/59/7ef459c38b37c992eff78968309b4477.js"></script>
 </body>
 </html>
