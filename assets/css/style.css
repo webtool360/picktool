@@ -1,12 +1,19 @@
 /* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
 
-/* Header Banner */
+/* Global Body Styling */
+body {
+    padding: 20px;
+    background-color: #eef3fb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
 /* Header Banner */
 .header {
     background-color: #2b5090;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    padding: 80px 20px 60px 20px !important; /* Large top and bottom padding expands blue container downwards */
+    padding: 40px 20px 30px 20px !important; /* Dynamically balanced padding */
     text-align: center;
     border-radius: 0 0 24px 24px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -14,42 +21,47 @@
 
 .header h1 {
     color: white !important;
-    font-size: clamp(42px, 12vw, 96px) !important;
+    font-size: clamp(28px, 6vw, 56px) !important; /* Slightly reduced & dynamic title scaling */
     font-weight: 800;
-    margin-bottom: 30px !important; /* Space between title and search bar */
+    margin-bottom: 20px !important; /* Balanced space below title */
     letter-spacing: 2px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .search-bar {
-    width: 75% !important;
-    max-width: 600px !important; /* Much wider search bar */
-    padding: 18px 25px !important; /* Taller search bar */
+    width: 90% !important;
+    max-width: 600px !important;
+    padding: 14px 20px !important;
     border-radius: 35px !important;
     border: none !important;
     outline: none !important;
-    font-size: 18px !important; /* Larger text inside search bar */
+    font-size: 16px !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
-
 
 .search-bar:focus {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Tool Container & Responsive Grid */
+.container { 
+    padding: 20px 10px; 
+    width: 95%;
+    max-width: 1000px; /* Expands to fit PC screens comfortably */
+    margin: auto; 
+}
 
-/* Tool Grid */
-.container { padding: 20px; max-width: 600px; margin: auto; }
 .tool-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Fluid grid layout for Mobile & PC */
     gap: 15px; 
     margin-top: 20px; 
 }
+
 .tool-card { 
     background: white; 
-    padding: 25px; 
-    font-size: 18px !important;
+    padding: 20px 15px; 
+    font-size: 16px !important;
     text-align: center; 
     border-radius: 12px; 
     text-decoration: none; 
@@ -57,7 +69,11 @@
     font-weight: bold; 
     border: 1px solid #ddd;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .tool-card:hover { background: #f0f2f5; }
 
 /* Footer */
@@ -68,12 +84,8 @@
     font-size: 14px; 
     margin-top: 40px; 
 }
-/* --- UNIVERSAL TOOL PAGE STYLING --- */
-body {
-    padding: 20px;
-    background-color: #f0f2f5;
-}
 
+/* --- UNIVERSAL TOOL PAGE STYLING --- */
 h1 {
     text-align: center;
     color: #3b5998;
@@ -87,7 +99,8 @@ h1 {
     padding: 25px;
     border-radius: 15px;
     border: 2px solid #3b5998;
-    max-width: 500px;
+    width: 95%;
+    max-width: 650px; /* Fluid container for PC/Mobile */
     margin: 0 auto;
 }
 
@@ -117,12 +130,7 @@ button {
     font-weight: bold;
     text-decoration: none;
 }
-body{
-background:#eef3fb;
-font-family:Arial,sans-serif;
-margin:0;
-padding:20px;
-}
+
 /* ==========================================
    AD INTERSTITIAL MODAL STYLES
    ========================================== */
@@ -144,10 +152,10 @@ padding:20px;
 /* Centered Floating Card */
 .ad-modal-card {
     background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 24px 20px;
     width: 90%;
-    max-width: 340px;
+    max-width: 420px; /* Fits comfortably on PC while remaining responsive */
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     margin: auto;
@@ -164,19 +172,20 @@ padding:20px;
     background-color: #eef3fb;
     border-left: 3px solid #3b5998;
     color: #333333;
-    font-size: 12px;
-    padding: 8px 10px;
+    font-size: 13px;
+    padding: 10px 12px;
     border-radius: 6px;
-    margin: 10px 0;
+    margin: 12px 0;
     text-align: left;
     line-height: 1.4;
 }
 
-/* 320x50 Banner Container */
+/* Responsive Banner Container */
 .ad-box-banner {
-    width: 320px;
-    height: 50px;
-    margin: 12px auto;
+    width: 100%;
+    max-width: 320px;
+    min-height: 50px;
+    margin: 14px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,103 +197,20 @@ padding:20px;
 /* Modal Action Button */
 .ad-btn {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #3b5998;
     color: #ffffff;
     border: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.2s ease;
 }
 
-/* Disabled State during 5s Timer */
+/* Disabled State during Timer */
 .ad-btn:disabled {
     background-color: #a0a0a0;
     cursor: not-allowed;
-}
-/* ==========================================
-   AD INTERSTITIAL MODAL STYLES
-   ========================================== */
-
-/* Fixed Full-Screen Centered Overlay */
-.ad-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* Dark dimmed background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999; /* Ensures overlay stays on top */
-}
-
-/* Centered Floating Card */
-.ad-modal-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    width: 90%;
-    max-width: 340px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin: auto;
-}
-
-.ad-modal-card h3 {
-    margin: 0 0 8px 0;
-    color: #1a1a1a;
-    font-size: 18px;
-}
-
-/* 2-Line Skip Instruction Box */
-.skip-instructions {
-    background-color: #eef3fb;
-    border-left: 3px solid #3b5998;
-    color: #333333;
-    font-size: 12px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    margin: 10px 0;
-    text-align: left;
-    line-height: 1.4;
-}
-
-/* 320x50 Banner Container */
-.ad-box-banner {
-    width: 320px;
-    height: 50px;
-    margin: 12px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: #f4f4f4;
-    border-radius: 4px;
-}
-
-/* Modal Action Button */
-.ad-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #3b5998;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.2s ease;
-}
-
-/* Disabled State during 5s Timer */
-.ad-btn:disabled {
-    background-color: #a0a0a0;
-    cursor: not-allowed;
-}
-
+    }
